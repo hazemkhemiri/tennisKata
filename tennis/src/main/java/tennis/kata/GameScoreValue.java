@@ -1,12 +1,19 @@
 package tennis.kata;
 
 public enum GameScoreValue {
-	_0, _15, _30, _40,DEUCE, ADV, WIN;
+	LOVE(0), FIFTEEN(15), THIRTY(30), FOURTY(40), DEUCE, ADV, WIN;
 	
+	private Integer value;
+	
+	private GameScoreValue(){}
+	
+	private GameScoreValue(Integer value) {
+		this.value = value;
+	}
 	public GameScoreValue increment(boolean deuce) {
 		
 		switch (this) {
-		case _40:
+		case FOURTY:
 			if (deuce) {
 				return ADV;
 			} else {
@@ -22,7 +29,12 @@ public enum GameScoreValue {
 	
 	@Override
 	public String toString() {
-		return name().replace("_", "");
+		
+		return value == null ? "none" : value.toString();
 	}
-	
+
+	public Integer getValue() {
+		return value;
+	}
+
 }

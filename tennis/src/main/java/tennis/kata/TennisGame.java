@@ -7,8 +7,8 @@ public class TennisGame {
 	private boolean tieBreak;
 	
 	public TennisGame(String guestPlayerName, String localPlayerName) {
-		setGuestPlayer(new Player(guestPlayerName, new Score(GameScoreValue._0, 0)));
-		setLocalPlayer(new Player(localPlayerName, new Score(GameScoreValue._0, 0)));
+		setGuestPlayer(new Player(new Score(GameScoreValue.LOVE, 0)));
+		setLocalPlayer(new Player(new Score(GameScoreValue.LOVE, 0)));
 	}
 	
 	public TennisGame(Player guestPlayer, Player localPlayer) {
