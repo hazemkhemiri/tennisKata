@@ -9,18 +9,12 @@ public class ScoreManager {
 		this.game = game;
 	}
 
-	public TennisGame getGame() {
-		return game;
-	}
-
 	private void updateGameScore(Player player) {
 		Score score = player.getScore();
 		final boolean deuce = game != null && game.isDeuce();
 		GameScoreValue newScore = score.getGameScore().increment(deuce);
-		if (newScore == null) {
-			throw new IllegalArgumentException("The player is already won the set");
-		}
 		score.setGameScore(newScore);
+
 		if (game != null) {
 			if (GameScoreValue.FOURTY.equals(game.getGuestPlayer().getScore().getGameScore())
 					&& GameScoreValue.FOURTY.equals(game.getLocalPlayer().getScore().getGameScore())) {

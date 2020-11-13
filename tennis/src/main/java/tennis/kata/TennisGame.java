@@ -5,12 +5,7 @@ public class TennisGame {
 	private Player localPlayer;
 	private boolean deuce;
 	private boolean tieBreak;
-	
-	public TennisGame(String guestPlayerName, String localPlayerName) {
-		setGuestPlayer(new Player(new Score(GameScoreValue.LOVE, 0)));
-		setLocalPlayer(new Player(new Score(GameScoreValue.LOVE, 0)));
-	}
-	
+
 	public TennisGame(Player guestPlayer, Player localPlayer) {
 		setGuestPlayer(guestPlayer);
 		setLocalPlayer(localPlayer);
@@ -47,5 +42,5 @@ public class TennisGame {
 	public void setTieBreak(Boolean tieBreak) {
 		this.tieBreak = tieBreak;
 	}
-	
+
 }

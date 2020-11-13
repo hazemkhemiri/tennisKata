@@ -13,6 +13,8 @@ public enum GameScoreValue {
 	public GameScoreValue increment(boolean deuce) {
 		
 		switch (this) {
+		case DEUCE:
+			return ADV;
 		case FOURTY:
 			if (deuce) {
 				return ADV;
@@ -29,12 +31,7 @@ public enum GameScoreValue {
 	
 	@Override
 	public String toString() {
-		
-		return value == null ? "none" : value.toString();
-	}
-
-	public Integer getValue() {
-		return value;
+		return value == null ? name() : value.toString();
 	}
 
 }

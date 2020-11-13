@@ -1,9 +1,5 @@
 package tennis;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 
 import tennis.kata.Player;
@@ -11,10 +7,12 @@ import tennis.kata.Score;
 import tennis.kata.GameScoreValue;
 import tennis.kata.TennisGame;
 
+import static org.junit.Assert.*;
+
 public class TennisKataScoreManagerTest {
 //test game score	
 	@Test
-	public void shouldReturn15WhenGet0() {
+	public void should_return_15_when_get_0() {
 		
 		Player player = new Player(new Score(GameScoreValue.LOVE));
 		
@@ -25,7 +23,7 @@ public class TennisKataScoreManagerTest {
 	}
 	
 	@Test
-	public void shouldReturn30WhenGet15() {
+	public void should_return_30_when_get_15() {
 		
 		Player player = new Player(new Score(GameScoreValue.FIFTEEN));
 		
@@ -36,7 +34,7 @@ public class TennisKataScoreManagerTest {
 	}
 	
 	@Test
-	public void shouldReturn40WhenGet30() {
+	public void should_return_40_when_get_30() {
 		
 		Player player = new Player(new Score(GameScoreValue.THIRTY));
 		
@@ -48,7 +46,7 @@ public class TennisKataScoreManagerTest {
 	}
 	
 	@Test
-	public void shouldReturnWinWhenGet40() {
+	public void should_return_win_when_get_40() {
 		
 		Player player = new Player(new Score(GameScoreValue.FOURTY));
 		
@@ -57,9 +55,20 @@ public class TennisKataScoreManagerTest {
 		assertEquals(GameScoreValue.WIN, player.getScore().getGameScore());
 		
 	}
+
+	@Test
+	public void should_return_null_when_increment_from_WIN () {
+
+		Player player = new Player(new Score(GameScoreValue.WIN));
+
+		player.markOnePoint(null);
+
+		assertNull(player.getScore().getGameScore());
+
+	}
 	
 	@Test
-	public void shouldActivateDeuceWhenTwoPlayersGet40() {
+	public void should_activate_deuce_when_two_players_get_40() {
 		Player player1 = new Player(new Score(GameScoreValue.THIRTY));
 		Player player2 = new Player(new Score(GameScoreValue.FOURTY));
 		TennisGame game = new TennisGame(player1, player2);
@@ -70,7 +79,7 @@ public class TennisKataScoreManagerTest {
 	}
 	
 	@Test
-	public void shouldReturnAdvWhenGet40AndDeuceIsActivated() {
+	public void should_return_ADV_when_get_40_and_deuce_is_Activated() {
 		Player player1 = new Player(new Score(GameScoreValue.THIRTY));
 		Player player2 = new Player(new Score(GameScoreValue.FOURTY));
 		TennisGame game = new TennisGame(player1, player2);
@@ -83,7 +92,7 @@ public class TennisKataScoreManagerTest {
 
 // test set	score
 	@Test
-	public void shouldeWinGameWhenGetAdvAndDeuceActivated() {
+	public void should_Win_Game_when_get_ADV_and_deuce_is_activated() {
 		Player player1 = new Player(new Score(GameScoreValue.THIRTY));
 		Player player2 = new Player(new Score(GameScoreValue.FOURTY));
 		TennisGame game = new TennisGame(player1, player2);
@@ -96,7 +105,7 @@ public class TennisKataScoreManagerTest {
 	}
 	
 	@Test
-	public void shouldReturnWinWhenGet40WhenDeuceDisactivated() {
+	public void should_win_game_when_get_40_when_deuce_is_not_activated() {
 		Player player1 = new Player(new Score(GameScoreValue.THIRTY));
 		Player player2 = new Player(new Score(GameScoreValue.FOURTY));
 		TennisGame game = new TennisGame(player1, player2);
@@ -107,7 +116,7 @@ public class TennisKataScoreManagerTest {
 	}
 	
 	@Test
-	public void shouldReturnDeuceWhenPlayerLoseAdv() {
+	public void should_get_deuce_when_player_lose_ADV() {
 		Player player1 = new Player(new Score(GameScoreValue.THIRTY));
 		Player player2 = new Player(new Score(GameScoreValue.FOURTY));
 		TennisGame game = new TennisGame(player1, player2);
@@ -120,7 +129,7 @@ public class TennisKataScoreManagerTest {
 	}
 	
 	@Test
-	public void shouldReturnAdvWhenTwoPlayersGetDeuce() {
+	public void should_get_ADV_when_two_players_get_Deuce() {
 		Player player1 = new Player(new Score(GameScoreValue.THIRTY));
 		Player player2 = new Player(new Score(GameScoreValue.FOURTY));
 		TennisGame game = new TennisGame(player1, player2);
@@ -135,7 +144,7 @@ public class TennisKataScoreManagerTest {
 	}
 	
 	@Test
-	public void shouldReturn0_1_0WhenPlayerWinSetGroup() {
+	public void should_return_0_1_0_when_player_win_Group() {
 		Player player2 = new Player(new Score(GameScoreValue.THIRTY, 0));
 		Player player1 = new Player(new Score(GameScoreValue.FOURTY, 0));
 		TennisGame game = new TennisGame(player2, player1);
@@ -147,7 +156,7 @@ public class TennisKataScoreManagerTest {
 	}
 	
 	@Test
-	public void shouldDesactivateDeuceWhenPlayerWinGame() {
+	public void should_disactivate_deuce_when_player_win_game() {
 		Player player1 = new Player(new Score(GameScoreValue.THIRTY, 1));
 		Player player2 = new Player(new Score(GameScoreValue.FOURTY, 1));
 		TennisGame game = new TennisGame(player1, player2);
@@ -163,7 +172,7 @@ public class TennisKataScoreManagerTest {
 
 //test match score	
 	@Test
-	public void shouldReturn0_0_1vs0_0_0WhenplayerWinAtTheSeventhGame() {
+	public void should_return_0_0_1_vs_0_0_0_when_player_win_seventh_game() {
 		Player player1 = new Player(new Score(GameScoreValue.THIRTY, 5));
 		Player player2 = new Player(new Score(GameScoreValue.FOURTY, 6));
 		TennisGame game = new TennisGame(player1, player2);
@@ -176,7 +185,7 @@ public class TennisKataScoreManagerTest {
 	}
 	
 	@Test
-	public void shouldReturn0_0_1vs0_0_0Whenplayer2WinTheFirstSet() {
+	public void should_return_0_0_1_vs_0_0_0_when_player2_win_first_set() {
 		Player player1 = new Player(new Score(GameScoreValue.THIRTY, 1));
 		Player player2 = new Player(new Score(GameScoreValue.FOURTY, 5));
 		TennisGame game = new TennisGame(player1, player2);
@@ -189,7 +198,7 @@ public class TennisKataScoreManagerTest {
 	}
 	
 	@Test
-	public void shouldPlayer2GetFirstMatchPoinWhenWinSixGame() {
+	public void should_player2_win_first_Match_Point_when_win_six_games() {
 		Player player1 = new Player(new Score(GameScoreValue.THIRTY, 1, 0));
 		Player player2 = new Player(new Score(GameScoreValue.FOURTY, 6, 0));
 		TennisGame game = new TennisGame(player1, player2);
@@ -216,7 +225,7 @@ public class TennisKataScoreManagerTest {
 	}
 	
 	@Test
-	public void shouldPlayer2NotWinMatchWhenWinTwoSetTwice() {
+	public void should_player2_win_match_when_win_two_set_twice() {
 		Player player1 = new Player(new Score(GameScoreValue.THIRTY, 1, 0));
 		Player player2 = new Player(new Score(GameScoreValue.FOURTY, 6, 1));
 		TennisGame game = new TennisGame(player1, player2);
@@ -229,7 +238,7 @@ public class TennisKataScoreManagerTest {
 	}
 	
 	@Test
-	public void shouldPlayer2BeWinnerMatchWhenWinTieBreakInSeventhSet() {
+	public void should_player2_win_match_when_win_tie_break_in_seventh_set() {
 		Player player1 = new Player(new Score(GameScoreValue.THIRTY, 2, 1));
 		Player player2 = new Player(new Score(GameScoreValue.FOURTY, 6, 1));
 		TennisGame game = new TennisGame(player1, player2);
@@ -243,7 +252,7 @@ public class TennisKataScoreManagerTest {
 	}
 	
 	@Test
-	public void shouldNotplayer2BeWinnerOfMatchWhenWinTieBreakInSixthSet() {
+	public void should_not_player2_be_winner_of_match_when_win_tie_break_in_sixth_set() {
 		Player player1 = new Player(new Score(GameScoreValue.THIRTY, 2, 1));
 		Player player2 = new Player(new Score(GameScoreValue.FOURTY, 5, 1));
 		TennisGame game = new TennisGame(player1, player2);
@@ -257,7 +266,7 @@ public class TennisKataScoreManagerTest {
 	}
 	
 	@Test
-	public void shouldNotplayer2BeWinnerOfMatchWhenWinTieBreakInTenthSet() {
+	public void should_not_player2_be_winner_when_win_tie_break_in_Tenth_set() {
 		Player player1 = new Player(new Score(GameScoreValue.THIRTY, 9, 1));
 		Player player2 = new Player(new Score(GameScoreValue.FOURTY, 9, 1));
 		TennisGame game = new TennisGame(player1, player2);
@@ -271,7 +280,7 @@ public class TennisKataScoreManagerTest {
 	}
 	
 	@Test
-	public void shouldPlayer2BeWinnerOfMatchWhenWinTieBreakInNinethSet() {
+	public void should_player2_be_winner_when_win_tie_break_in_nineth_set() {
 		Player player1 = new Player(new Score(GameScoreValue.THIRTY, 7, 1));
 		Player player2 = new Player(new Score(GameScoreValue.FOURTY, 8, 1));
 		TennisGame game = new TennisGame(player1, player2);
@@ -284,4 +293,3 @@ public class TennisKataScoreManagerTest {
 		assertTrue(win);
 	}
 }
-
